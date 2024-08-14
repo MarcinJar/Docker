@@ -1,0 +1,40 @@
+name: "local-wordpress"
+services:
+  database:
+    image: mysql:latest
+    container_name: database_mysql
+    volumes:
+      - database_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=uczymysiedokera
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=docker
+      - MYSQL_PASSWORD=docker
+    networks:
+      - wordpress-net
+  wordpress:
+    depends_on:
+      - database
+    image: wordpress:latest
+    container_name: wordpress_cms
+    volumes:
+      - wordpress_file:/var/www/html
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=database:3306
+      - WORDPRESS_DB_USER=docker
+      - WORDPRESS_DB_PASSWORD=docker
+    ports:
+      - "8080:80"
+    networks:
+      - wordpress-net
+
+networks:
+  wordpress-net:
+    driver: bridge
+
+volumes:
+  database_data:
+  wordpress_file:
+

@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "8000:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true

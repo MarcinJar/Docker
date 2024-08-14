@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  kali:
+    image: kali-my-image
+    container_name: kali-work
+    ports:
+      - "8080:80"
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
+    restart: always # optional, if you want the container to restart automatically
+    networks:
+      - study
+
+networks:
+  study:
+    external: true

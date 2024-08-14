@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  kali-gui:
+    image: kali-gui
+    container_name: kali-gui-v1
+    ports:
+      - "5900:5900"
+    command: sh -c '/usr/local/bin/start-vnc.sh && bash'
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
+    restart: always # optional, if you want the container to restart automatically
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    external: true
