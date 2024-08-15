@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  kali:
+    image: tleemcjr/metasploitable2
+    container_name: metasploitable
+    command: sh -c '/bin/services.sh && bash'
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
+    restart: always # optional, if you want the container to restart automatically
+    networks:
+      - laboratorium
+
+networks:
+  laboratorium:
+    external: true
