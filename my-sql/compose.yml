@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
+    restart: always # optional, if you want the container to restart automatically
+    networks:
+      - laboratorium
+
+networks:
+  laboratorium:
+    external: true
