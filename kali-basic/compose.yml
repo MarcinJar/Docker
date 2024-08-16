@@ -1,8 +1,8 @@
 services:
-  metasploitable:
-    image: tleemcjr/metasploitable2
-    container_name: metasploitable
-    command: sh -c '/bin/services.sh && bash'
+  kali:
+    image: kalilinux/kali-rolling
+    container_name: kali
+    command: 'bash'
     stdin_open: true # equivalent to -i
     tty: true # equivalent to -t
     restart: always # optional, if you want the container to restart automatically
