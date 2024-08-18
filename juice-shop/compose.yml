@@ -1,0 +1,9 @@
+services:
+  shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    ports:
+      - "3000:3000"
+    stdin_open: true # equivalent to -i
+    tty: true # equivalent to -t
+    restart: always # optional, if you want the container to restart automatically
