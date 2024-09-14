@@ -1,0 +1,19 @@
+name: rdp-kali
+services:
+  kali-rdp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kali-rdp
+    ports:
+      - "3389:3389"
+    volumes:
+      - ./data:/root/data
+    stdin_open: true
+    tty: true
+    networks:
+      - kali-network
+
+networks:
+  kali-network:
+    driver: bridge
